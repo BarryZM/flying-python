@@ -129,8 +129,8 @@ print("对比Python版本与C++版本的性能...")
 ```
 
     对比Python版本与C++版本的性能...
-    30.8 µs ± 254 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
-    130 ns ± 6.4 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+    29.9 µs ± 995 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+    130 ns ± 2.91 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 
 
 ### 3.2 使用C++ Unordered Map
@@ -256,8 +256,8 @@ print("对比Python版本与C++版本的性能...")
 ```
 
     对比Python版本与C++版本的性能...
-    6.63 µs ± 183 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
-    157 ns ± 3.13 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+    6.56 µs ± 117 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+    162 ns ± 6.29 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 
 
 ### 3.3 使用C++ Unordered Set
@@ -329,10 +329,10 @@ myset2 = {x for x in range(50, 60)}
 def intersection_py():
     return myset1 & myset2
 
-print("用Python(C++)来实现，计算结果为%s!"% intersection_py())
+print("用Python来实现，计算结果为%s!"% intersection_py())
 ```
 
-    用Python(C++)来实现，计算结果为{50, 51, 52, 53, 54, 55, 56, 57, 58, 59}!
+    用Python来实现，计算结果为{50, 51, 52, 53, 54, 55, 56, 57, 58, 59}!
 
 
 
@@ -372,8 +372,8 @@ print("对比Python版本与C++版本的性能...")
 ```
 
     对比Python版本与C++版本的性能...
-    244 ns ± 2.96 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
-    4.87 µs ± 100 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+    274 ns ± 13.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+    5.28 µs ± 220 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 
 
 
@@ -429,8 +429,8 @@ print("对比Python版本与C++版本的性能...")
 ```
 
     对比Python版本与C++版本的性能...
-    276 ns ± 3.18 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
-    46.2 ns ± 0.845 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+    295 ns ± 5.91 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+    46.1 ns ± 0.785 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 
 
 ## 4. 传值与传引用
