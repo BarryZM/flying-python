@@ -1,4 +1,4 @@
-# 并行计算之多线程篇
+# Python多任务处理(多线程篇)
 作者: tushushu  
 项目地址: https://github.com/tushushu/flying-python
 
