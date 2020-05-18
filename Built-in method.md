@@ -129,7 +129,7 @@ def sum_sqr_5(arr):
 
 
 ## 2. 字符串拼接
-输入一个列表，要求将列表中的字符串都拼接为一个字符串。最终性能提升了4.6倍。
+输入一个列表，要求将列表中的字符串的前3个字符都拼接为一个字符串。最终性能提升了2.1倍。
 
 首先创建一个列表，生成10000个随机长度和内容的字符串。
 
@@ -147,7 +147,7 @@ strings = [random_letters(randint(1, 10)) for _ in range(10000)]
 ```
 
 ### 2.1 最常规的写法
-while循环遍历列表，对字符串进行拼接。平均运行时间1.36毫秒。
+while循环遍历列表，对字符串进行拼接。平均运行时间1.86毫秒。
 
 
 ```python
@@ -156,7 +156,7 @@ def concat_strings_0(strings):
     n = len(strings)
     i = 0
     while i < n:
-        res += strings[i]
+        res += strings[i][:3]
         i += 1
     return res
 ```
@@ -166,18 +166,18 @@ def concat_strings_0(strings):
 %timeit concat_strings_0(strings)
 ```
 
-    1.36 ms ± 37 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    1.86 ms ± 74.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 
 
 ### 2.2 for range代替while循环
-避免i += 1的变量类型检查带来的额外开销。平均运行时间1.07毫秒。
+避免i += 1的变量类型检查带来的额外开销。平均运行时间1.55毫秒。
 
 
 ```python
 def concat_strings_1(strings):
     res = ""
     for i in range(len(strings)):
-        res += strings[i]
+        res += strings[i][:3]
     return res
 ```
 
@@ -186,18 +186,18 @@ def concat_strings_1(strings):
 %timeit concat_strings_1(strings)
 ```
 
-    1.07 ms ± 6.57 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    1.55 ms ± 32.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 
 
 ### 2.3 for x in strings代替for range
-避免strings[i]的变量类型检查带来的额外开销。平均运行时间0.827毫秒。
+避免strings[i]的变量类型检查带来的额外开销。平均运行时间1.32毫秒。
 
 
 ```python
 def concat_strings_2(strings):
     res = ""
     for x in strings:
-        res += x
+        res += x[:3]
     return res
 ```
 
@@ -206,16 +206,16 @@ def concat_strings_2(strings):
 %timeit concat_strings_2(strings)
 ```
 
-    827 µs ± 5.88 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    1.32 ms ± 19.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 
 
 ### 2.4 .join方法套用生成器表达式
-平均运行时间0.443毫秒。
+平均运行时间1.06毫秒。
 
 
 ```python
 def concat_strings_3(strings):
-    return "".join(x for x in strings)
+    return "".join(x[:3] for x in strings)
 ```
 
 
@@ -223,16 +223,16 @@ def concat_strings_3(strings):
 %timeit concat_strings_3(strings)
 ```
 
-    443 µs ± 3.41 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    1.06 ms ± 15.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 
 
 ### 2.5 .join方法套用列表解析式
-平均运行时间0.29毫秒。
+平均运行时间0.85毫秒。
 
 
 ```python
 def concat_strings_4(strings):
-    return "".join([x for x in strings])
+    return "".join([x[:3] for x in strings])
 ```
 
 
@@ -240,7 +240,7 @@ def concat_strings_4(strings):
 %timeit concat_strings_4(strings)
 ```
 
-    290 µs ± 5.17 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    858 µs ± 14.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 
 
 ## 3. 筛选奇数
